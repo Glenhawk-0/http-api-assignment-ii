@@ -1,0 +1,29 @@
+{
+  "name": "http-api-assignment-ii",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/server.js",
+  "scripts": {
+    "start": "node ./src/server.js",
+    "pretest": "eslint ./src --fix",
+    "test": "echo \"Test complete\"",
+    "nodemon": "nodemon --watch ./src ./src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Glenhawk-0/http-api-assignment-ii.git"
+    
+  },
+  "author": "Lennon Hare",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/Glenhawk-0/http-api-assignment-ii/issues"
+  },
+  "homepage": "https://github.com/Glenhawk-0/http-api-assignment-ii#readme",
+  "devDependencies": {
+    "eslint": "^8.57.1",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.32.0",
+    "nodemon": "^3.1.10"
+  }
+}
