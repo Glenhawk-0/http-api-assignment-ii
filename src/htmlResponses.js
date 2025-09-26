@@ -1,10 +1,10 @@
-// do html 
+// do html
 // function to handle the index page
 // i dont think we need this. at least not here
 
 const fs = require('fs');
 
-const index = fs.readFileSync(`${__dirname}/../client/client.html`); 
+const index = fs.readFileSync(`${__dirname}/../client/client.html`);
 
 //
 const getIndex = (request, response) => {
@@ -12,7 +12,6 @@ const getIndex = (request, response) => {
   response.write(index);
   response.end();
 };
-
 
 module.exports = {
   getIndex,

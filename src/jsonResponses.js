@@ -1,5 +1,5 @@
-// used blocks of code from examples from week 4 
-//ill be honest i kinda frakensteined it together and
+// used blocks of code from examples from week 4
+// ill be honest i kinda frakensteined it together and
 //  it just kept lining up like perfectly .. i apologize
 
 // Note this object is purely in memory
@@ -13,7 +13,7 @@ const users = {};
 const respondJSON = (request, response, status, object) => {
   const content = JSON.stringify(object);
 
-    // Headers contain our metadata. HEAD requests only get
+  // Headers contain our metadata. HEAD requests only get
   // this information back, so that the user can see what
   // a GET request to a given endpoint would return. Here
   // they would see what format of data (JSON) and how big
@@ -28,13 +28,12 @@ const respondJSON = (request, response, status, object) => {
 
   // HEAD requests don't get a body back, just the metadata.
   // So if the user made one, we don't want to write the body.
-  if(request.method !== 'HEAD') {
+  if (request.method !== 'HEAD') {
     response.write(content);
   }
 
   response.end();
 };
-
 
 // return user object as JSON
 const getUsers = (request, response) => {
@@ -66,7 +65,7 @@ const addUser = (request, response) => {
     return respondJSON(request, response, 400, responseJSON);
   }
 
-    // default status code to 204 updated
+  // default status code to 204 updated
   let responseCode = 204;
 
   // If the user doesn't exist yet
@@ -74,11 +73,11 @@ const addUser = (request, response) => {
     // Set the status code to 201 (created) and create an empty user
     responseCode = 201;
     users[name] = {
-      name: name,
+      name,
     };
   }
 
- // add or update fields for this user name
+  // add or update fields for this user name
   users[name].name = name;
   users[name].age = age;
 
@@ -89,8 +88,7 @@ const addUser = (request, response) => {
     return respondJSON(request, response, responseCode, responseJSON);
   }
 
-
-    // When we send back a 204 status code, it will not send response
+  // When we send back a 204 status code, it will not send response
   // body. However, if we didn't pass in an object as the 4th param
   // to our respondJSON function it would break. So we send in an
   // empty object, which will stringify to an empty string.

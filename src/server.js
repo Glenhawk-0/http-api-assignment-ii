@@ -4,7 +4,7 @@
 const http = require('http');
 const htmlHandler = require('./htmlResponses.js');
 const mediaHandler = require('./mediaResponses.js');
-//const responseHandler = require('./responses.js');
+// const responseHandler = require('./responses.js');
 const jsonHandler = require('./jsonResponses.js');
 
 // set the port. process.env.PORT and NODE_PORT are for servers like heroku
@@ -16,7 +16,7 @@ const urlStruct = {
   '/style.css': mediaHandler.getCSS,
   '/getUsers': jsonHandler.getUsers,
   '/addUser': jsonHandler.getUser,
-  
+
   notFound: jsonHandler.getNotFound, // default
 };
 

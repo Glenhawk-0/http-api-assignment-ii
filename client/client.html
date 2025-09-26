@@ -56,19 +56,11 @@
 
       if(obj.users){
         //To display the data easily, we will just stringify it again and display it.
-       // let jsonString = JSON.stringify(obj.users);
-        //content.innerHTML += `<p>${jsonString}</p>`;
+       let jsonString = JSON.stringify(obj.users);
+        content.innerHTML += `<p>${jsonString}</p>`;
 
-        // this looks much better. 
-        let userList = '<ul>';
-          Object.entries (obj.users).forEach(([name,user]) =>{
-            const user = obj.users[name];
-            userList+= `<li>${name}: Age ${user.age}</li>`;
-          });
-          userList+= '</ul>'
-          content.innerHTML += userList;
-      }
-    }//end of parseResponse
+
+    }//end of parseResponse //
   };//end of HandleResponse
 
    //Uses fetch to send a postRequest. Marksed as async because we use await
@@ -102,22 +94,56 @@
     };
 
 
+        const requestUpdate = async (userForm) => {
+      
+      //Grab the url and method from the html form below
+      const url = userForm.querySelector('#urlField').value;
+      const method = userForm.querySelector('#methodSelect').value;
+      
+      //Await our fetch response. Go to the URL, use the right method, and attach the headers.
+      let response = await fetch(url, {
+        method,
+        headers: {
+            'Accept': 'application/json'
+        },
+      });
+
+      //Once we have our response, send it into handle response. The second parameter is a boolean
+      //that says if we should parse the response or not. We will get a response to parse on get
+      //requests so we can do an inline boolean check, which will return a true or false to pass in.
+      handleResponse(response, method === 'get');
+    };
+
+
+
         //Init function is called when window.onload runs (set below).
     const init = () => {
       //Grab the form
       const nameForm = document.querySelector('#nameForm');
+      const userForm = document.querySelector('#userForm');
       
       //Create an addUser function that cancels the forms default action and
       //calls our sendPost function above.
-      const addUser = (e) => {
+      //const addUser = (e) => {
+      //needs to be an event listener
+        nameForm.addEventListener('submit', (e) => {
         e.preventDefault();
         sendPost(nameForm);
         return false;
-      }
+      });
+
+
+      //function to handle our request. In this case, it also cancels the built in html form action
+      userForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        requestUpdate(userForm);
+        return false;
+      });
+
 
     };
 
-
+window.onload = init;
   </script>
 </head>
 <body>
