@@ -58,7 +58,7 @@
         //To display the data easily, we will just stringify it again and display it.
        let jsonString = JSON.stringify(obj.users);
         content.innerHTML += `<p>${jsonString}</p>`;
-
+      }
 
     }//end of parseResponse //
   };//end of HandleResponse
@@ -127,6 +127,7 @@
       //const addUser = (e) => {
       //needs to be an event listener
         nameForm.addEventListener('submit', (e) => {
+          //debugger
         e.preventDefault();
         sendPost(nameForm);
         return false;
@@ -135,6 +136,7 @@
 
       //function to handle our request. In this case, it also cancels the built in html form action
       userForm.addEventListener('submit', (e) => {
+        //debugger;
         e.preventDefault();
         requestUpdate(userForm);
         return false;
@@ -144,6 +146,7 @@
     };
 
 window.onload = init;
+
   </script>
 </head>
 <body>
