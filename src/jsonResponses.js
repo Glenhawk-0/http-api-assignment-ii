@@ -97,7 +97,7 @@ const addUser = (request, response) => {
 };
 
 // function for 404 not found requests with message
-const notFound = (request, response) => {
+const getNotFound = (request, response) => {
   // create error message for response
   const responseJSON = {
     message: 'The page you are looking for was not found.',
@@ -112,5 +112,5 @@ const notFound = (request, response) => {
 module.exports = {
   getUsers,
   addUser,
-  notFound,
+  getNotFound,
 };
